@@ -1,0 +1,37 @@
+{% extends "dashboard.html" %}
+{% load bootstrap_filters %}
+{% load static %}
+{% block title %}Actualizar Grupo{% endblock %}
+{% block content %}
+<head>
+    <link type='text/css' href= "{% static "css\style_grupo.css" %}" rel='stylesheet'/>
+</head>
+
+<div class="container-fluid mt-4">
+    <h2>Actualizar Grupo</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="name" class="form-label">Nombre del Grupo</label>
+            {{ form.name|add_class:"form-control" }}
+        </div>
+        <div class="mb-3">
+            <label for="permissions" class="form-label">Permisos</label>
+            <div class="permission-card">
+                <div class="permission-list">
+                    {% for permission in form.permissions %}
+                        <div class="permission-item">
+                            <label>
+                                {{ permission }}
+                                {{ permission.label }}
+                            </label>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <a href="{% url 'listar_grupos' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "dashboard.html" %}
+{% load static %}
+{% block content %}
+<head>
+    <link type='text/css' href= "{% static "css\style_crud.css" %}" rel='stylesheet'/>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+</head>
+<h2>Usuarios Inactivos</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for usuario in usuarios_inactivos %}
+        <tr>
+            <td>{{ usuario.email }}</td>
+            <td>{{ usuario.nombre }}</td>
+            <td>{{ usuario.apellido }}</td>
+            <td>
+                <a class="btn btn-success btn-sm" href="javascript:void(0);" onclick="confirmReactivar('{{ usuario.pk }}')">Reactivar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'listar_usuarios' %}" class="btn btn-primary">Volver a Usuarios Activos</a>
+
+<script src="{% static 'js/confirmations.js' %}"></script>
+
+{% endblock %}

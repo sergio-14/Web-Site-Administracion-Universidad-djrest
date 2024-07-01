@@ -1,0 +1,46 @@
+{% extends 'Dashboard.html' %} 
+{% block content %}
+<div class="container px-4 pt-3 font px-lg-5">
+    <h2 class="text-center pb-4 titulosgeneral">PLANILLA DE PROYECTOS DE INTERACION SOCIAL POR MATERIA</h2>
+
+    <form method="get" action="{% url 'clasificar_proyectos' %}" class="mb-4 px-lg-5 card-text">
+        <label class="pb-2 card-name" for="gestion">Selecciona la Gestión:</label>
+        <select name="gestion" id="gestion" class="form-control card-text card-ct" onchange="this.form.submit()">
+            <option value="">Todas</option>
+            {% for gestion in gestiones %}
+                <option value="{{ gestion.Id_Ges }}" {% if gestion.id|stringformat:"s" == selected_gestion %}selected{% endif %}>
+                    {{ gestion.S_Gestion }}
+                </option>
+            {% endfor %}
+        </select>
+    </form>
+
+    <div class="row px-lg-5">
+        <div class="col-md-6 pb-4">
+            <h6 class="card-name">Materias que Subieron Proyecto</h6>
+            <ul class="list-group card-ct pb-4">
+                {% for materia in materias_con_proyectos %}
+                    <li class="list-group-item card-texto">
+                        {{ materia.S_Materia }}
+                         <input type="checkbox" checked disabled class="ml-2">
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-md-6 pb-4">
+            <h6 class="card-name">Materias que no Subieron Proyecto</h6>
+            <ul class="list-group card-ct pb-4">
+                {% for materia in materias_sin_proyectos %}
+                    <li class="list-group-item card-texto">
+                        {{ materia.S_Materia }}
+                         <input type="checkbox" disabled class="ml-2">
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+

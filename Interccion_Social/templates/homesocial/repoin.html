@@ -1,0 +1,164 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+            type="text/css"
+            href="{% static 'css/repoin.css' %}"
+            rel="stylesheet"
+    />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous"
+    />
+</head>
+
+<body class="contenedorbody container ">
+
+<div class="row g-0 text-center pt-3 justify-content-center align-items-center">
+    <h2 class="title text-center pt-4">PROYECTOS DE INVESTIGACIÓN E INTERRACIÓN SOCIAL</h2>
+    <form method="GET" action="" id="filterForm">
+        <div class=" row">
+            <div class="col-1 m-2 d-flex justify-content-center align-items-center">
+                <a href="{% url 'hometrabajos' %}" class="p-2 stilo rounded-circle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-x-octagon-fill" viewBox="0 0 16 16">
+                        <path d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353zm-6.106 4.5L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="col-4 p-2 m-2 stilo">
+                <h2 class="card-text"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-intersect" viewBox="0 0 16 16">
+                    <path d="M0 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2H2a2 2 0 0 1-2-2zm5 10v2a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-2v5a2 2 0 0 1-2 2zm6-8V2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h2V6a2 2 0 0 1 2-2z"/>
+                  </svg> GESTION</h2>
+                <select name="T_Gestion" id="t_gestion" class="form-select" aria-label="Default select example" onchange="submitForm()">
+                    {% for gestion in t_gestiones %}
+                        <option value="{{ gestion.Id_Ges }}" {% if gestion.Id_Ges|stringformat:"s" == selected_t_gestion %}selected{% endif %}>{{ gestion.S_Gestion }}</option>
+                    {% endfor %}
+                    
+                </select>
+            </div>
+            <div class="col p-2 m-2 stilo">
+                <h2 class="card-text"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-intersect" viewBox="0 0 16 16">
+                    <path d="M0 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2H2a2 2 0 0 1-2-2zm5 10v2a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-2v5a2 2 0 0 1-2 2zm6-8V2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h2V6a2 2 0 0 1 2-2z"/>
+                  </svg> SEMESTRE</h2>
+                <select name="T_Semestre" id="t_semestre" class="form-select " aria-label="Default select example" onchange="submitForm()">
+                    {% for semestre in t_semestres %}
+                        <option value="{{ semestre.Id_Semestre }}" {% if semestre.Id_Semestre|stringformat:"s" == selected_t_semestre %}selected{% endif %}>{{ semestre.S_Semestre }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+    </form>
+</div>
+{% if listaproyectos %}
+    {% for proyecto in listaproyectos %}
+        <div class=" mt-4 stilo mb-5">
+            <div class="row">
+                <!-- Primera Columna -->
+                <div class="col-md-6">
+                    <!-- Primera Fila de la Primera Columna -->
+                    <div class="row pt-4 px-4">
+                        <div class="col-12 parrafos justify-content-center align-items-center">
+                            <h3 class="">{{ proyecto.S_Titulo }}</h3>
+                            <div class="row mb-3 justify-content-center align-items-center">
+                                <div class="col text-center">
+                                    <p class="card-text text-end">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-back" viewBox="0 0 16 16">
+                                            <path d="M0 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"/>
+                                        </svg> 
+                                        Docente: {{ proyecto.S_persona.nombre }} {{ proyecto.S_persona.apellido }}
+                                    </p>
+                                </div>
+                                <div class="col-auto">
+                                    <img src="{{ proyecto.S_persona.imagen.url }}" class="img-fluid" id="imgdocente" alt="Imagen de ejemplo">
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col textdate">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
+                                        <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857z"/>
+                                        <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+                                      </svg> En : {{ proyecto.Fecha_Inicio }}
+                                </div>
+                                <div class="col textdate">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
+                                        <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857z"/>
+                                        <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+                                      </svg> a : {{ proyecto.Fecha_Finalizacion }}
+                                </div>
+                            </div>
+                            <p class="card-text "> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-back" viewBox="0 0 16 16">
+                                <path d="M0 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"/>
+                              </svg> CATEGORÍA: {{ proyecto.T_Tipo_Proyecto }}
+                            </p>
+                            <div class="col-12 parrafos mb-3">
+                                <p class="textto">DESCRIPCIÓN:<br>{{ proyecto.S_Descripcion }}</p>
+                            </div>
+                            {% if proyecto.S_Documentacion %}
+                            <div class="d-flex align-items-center stilo p-2 mx-5 mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-file-earmark-richtext-fill" viewBox="0 0 16 16">
+                                  <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0M9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1M7 6.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0m-.861 1.542 1.33.886 1.854-1.855a.25.25 0 0 1 .289-.047l1.888.974V9.5a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V9s1.54-1.274 1.639-1.208M5 11h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1m0 2h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1"/>
+                                </svg>
+                                <a
+                                  href="{{ proyecto.S_Documentacion.url }}"
+                                  class="list-group-item list-group-item-action"
+                                  > Documentacion completa</a
+                                >
+                            </div>
+                            {% else %}
+                                No disponible
+                            {% endif %}
+                            
+                        </div>
+                    </div>
+                </div>
+                <!-- Segunda Columna -->
+                <div class="col-md-6 p-4">
+                    <h3 class="card-text">ASIGNATURA: {{ proyecto.T_Materia }}</h3>
+                    <div class="stilo">
+                        {% if proyecto.S_Imagen %}
+                            <img src="{{ proyecto.S_Imagen.url }}" class="img-fluid p-3" id="imgsocial" alt="Imagen de ejemplo">
+                        {% else %}
+                            No disponible
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    <br><br><br><br>
+{% else %}
+    <p class="textdate text-center pt-5">Debe Elegir un Filtro Seleccionando las Opciones .</p>
+{% endif %}
+</div><br><br><br><br>
+<script
+        src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"
+></script>
+
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"
+></script>
+
+<script>
+    function submitForm() {
+        document.getElementById("filterForm").submit();
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Baloo 2', cursive;
+}
+
+/* Estilos de la lista de tarjetas */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 800px;
+    margin: 50px auto;
+    justify-content: center;
+    align-items: center;
+    gap: 5px; /* Espacio entre tarjetas */
+    padding: 10px;
+}
+h2, h6{
+text-align: center;
+margin-top: 2px;
+margin-bottom: 2px;
+}
+/* Estilos de las tarjetas */
+.card {
+
+    position: relative;
+    width: auto;
+    background: #eeffff88;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: .5s;
+    flex: 1 1 calc(100% - 20px); /* Ajusta el tamaño de las tarjetas */
+    max-width: calc(100% - 20px); /* Asegura que las tarjetas no excedan el 25% del contenedor */
+}
+.card-link {
+    display: block;
+    text-decoration: none;  /* Elimina el subrayado del enlace */
+    color: inherit;  /* Mantiene el color del texto */
+}
+.card:hover {
+    box-shadow:0 1px 4px #003366;
+}
+
+.card .description h6 {
+    text-align: center;
+    font-size: 14px;
+    color: #1c5a5c;
+    margin: 10px 5px;
+}
+
+/* Estilos para el contenedor de la búsqueda */
+.d-flex {
+    display: flex;
+    justify-content: center;
+    margin: 5px auto;
+    flex: 1 1 80%;
+    max-width: 80%;
+    overflow: hidden;
+    transition: .5s;
+}
+.card-body{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    max-width: 20px;
+    width: 20px;
+    height: 5px;
+}
+#btn{
+    background-color: #003366;
+    color: #fff;
+}
+#btn:hover{
+    background: #0b6164;
+    box-shadow: 0 5px 15px #003366;
+    transform: translateY(-2px);
+}
+.pagination-container {
+    display: flex;
+    justify-content: center; /* Centra el contenedor de paginación */
+    margin-top: 20px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center; /* Centra los elementos dentro del contenedor de paginación */
+    align-items: center;
+}
+
+.step-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Espacio entre botones */
+}
+
+.step-links button {
+    background-color: #003366; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    transition: background-color 0.3s; /* Transición suave para el color de fondo */
+    cursor: pointer;
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+.step-links button:hover {
+    background-color: #0b6164; /* Color de fondo al pasar el cursor */
+}
+
+.current {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+@media (max-width: 3000px),(max-width: 2000px) ,(max-width: 1200px),(max-width: 900px){
+    .card {
+        flex: 1 1 calc(100% - 20px); 
+        max-width: calc(100% - 20px);
+    }
+    .d-flex {
+        flex: 1 1 70%; /* Ajusta el tamaño del contenedor de búsqueda */
+        max-width: 50%; /* Asegura que el contenedor no exceda el 70% del contenedor */
+    }
+}
+
+@media (max-width: 600px) {
+    .card, .d-flex {
+        flex: 1 1 calc(100% - 20px); /* 1 tarjeta por fila */
+        max-width: calc(100% - 20px);
+    }
+    .d-flex {
+        flex: 1 1 70%; /* Ajusta el tamaño del contenedor de búsqueda */
+        margin: 10px 10px; /* Ajusta el margen en pantallas más pequeñas */
+    }
+}

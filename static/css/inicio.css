@@ -1,0 +1,170 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+.anton-regular {
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+#boton {
+  font-family: "Anton";
+  border: 2px solid rgb(2, 2, 44); 
+  background-color: rgba(245, 241, 241, 0.295); 
+  color: rgb(5, 2, 39); 
+  padding: 10px 20px;
+  font-size: 16px; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease;
+}
+#botonn {
+  font-family: "Anton";
+  border: 2px solid #b34a0d; 
+  /* background-image: linear-gradient(rgba(233, 93, 12, 0.849),rgba(41, 18, 3, 0.822)); */
+  color: rgb(51, 23, 5); 
+  padding: 10px 20px; 
+  font-size: 16px; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease;
+}
+
+
+#boton:hover {
+  background-color: rgb(13, 5, 63); 
+  color: white; 
+}
+
+
+#boton:active {
+  background-color: rgb(6, 9, 59); 
+  color: white; 
+}
+#botonn:hover {
+  background-color:#b34a0d; 
+  color: white; 
+}
+
+
+#botonn:active {
+  background-color:#b34a0d;;
+  color: white; 
+}
+
+.sidebar {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+.sidebar .log {
+  border-radius: 50%;
+  width: 250px;
+  height: 250px;
+  margin-bottom: 20px;
+  z-index: 1;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  padding: 20px;
+  z-index: 10;
+}
+.content h1 {
+  font-size: 68px;
+  font-family: "Anton";
+  margin-bottom: 10px;
+  color: #0c043a;
+  z-index: 10;
+}
+.subtitulo{
+  font-size: 34px;
+  font-family: "Anton";
+  margin-bottom: 10px;
+  color: #0c043a;
+  z-index: 10;
+}
+.content h1 span {
+  color: #b34a0d; /* Color marrón */
+  z-index: 10;
+}
+.content p {
+  font-size: 17px;
+  font-family: "Anton";
+  margin-top: 20px;
+  z-index: 10;
+}
+.social-icons {
+  margin-top: 20px;
+  z-index: 10;
+}
+.social-icons a {
+  font-size: 24px;
+  margin:  10px;
+  color: #ffffff;
+  transition: transform 0.3s ease; /* Añade una transición suave */
+  z-index: 10;
+}
+.social-icons a:hover {
+  transform: scale(1.5); /* Aumenta el tamaño al 120% */
+  z-index: 10;
+}
+.colorres{
+  color: #0c043a;
+  z-index: 10;
+}
+
+/*ola de grid */
+.logoprogramador{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  opacity: 60%;
+}
+.logomujer{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width:500px;
+  height: 700px;
+  opacity: 85%;
+}
+
+@media (max-width: 767px) {
+  
+  .content h1 {
+    font-size: 30px;
+  }
+  .sidebar {
+    display: none; /* Ocultar la imagen en dispositivos móviles */
+  }
+
+  .logoprogramador {
+    position: fixed; /* Posición fija para que esté siempre en la esquina */
+    bottom: 0;
+    right: 0;
+  }
+
+  /* Opcional: puedes ajustar otros estilos para dispositivos móviles aquí */
+  .container-fluid {
+    padding: 15px;
+  }
+
+  .content {
+    text-align: center;
+  }
+
+ 
+}
+

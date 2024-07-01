@@ -1,0 +1,21 @@
+{% extends 'dashboard.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Crear Form{% endblock %}
+{% load static %}
+{% block content %}
+<div class="container px-lg-5 font pb-5">
+  <div class="no-gutters container px-lg-5 px-2">
+    <h1 id="letr" class="text-center pb-5 pt-4">CONFIRMACION DE ELIMINACIÓN DEL SEMESTRE </h1>
+    <article class="pb-5" >
+        <p class="fontf">¿Estás seguro de que deseas eliminar {{ semestre.T_Semestre }}?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button class="btn btn-primary" type="submit">Eliminar</button>
+            <a class="btn btn-danger" href="{% url 'listars' %}">Cancelar</a><br>
+        </form>
+    </article>
+  </div> 
+</div>
+
+{% endblock %}
+

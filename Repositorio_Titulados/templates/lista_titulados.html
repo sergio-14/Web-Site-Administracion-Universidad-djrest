@@ -1,0 +1,14 @@
+{% extends "dashboard.html" %}
+{% load static %}
+{% block  content%}
+
+<h2>Lista de Titulados</h2>
+<ul>
+  {% for titulado in titulados %}
+    <li>
+      {{ titulado.usuario.nombre }} {{ titulado.usuario.apellido }} - {{ titulado.proyecto_final.titulo }}
+    </li>
+  {% endfor %}
+</ul>
+
+{% endblock %}

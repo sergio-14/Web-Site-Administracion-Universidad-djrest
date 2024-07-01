@@ -1,0 +1,56 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    color: #333;
+  }
+  
+  section {
+    max-width: 60%;
+    margin: 50px auto;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #00336695;
+    color: #fff;
+    border-radius: 25%;
+    text-align: center;
+  }
+
+  .card-link {
+    display: block;
+    text-decoration: none;  /* Elimina el subrayado del enlace */
+    color: inherit;  /* Mantiene el color del texto */
+}
+
+  #Bienvenida{
+    background-color: #c40e0ee5;
+    color: #fff;
+ 
+  }
+  section:hover{
+    box-shadow: 0 5px 15px #032241;
+    background-color: #032241;
+    transform: translateY(-1px);
+    transform: translateX(-2px);
+  }
+  /* Estilos del footer */
+footer {
+  background-color: #032241;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  font-weight: bold; 
+}
+
+.footer-content {
+  max-width: 1200px;
+  font-weight: bold; 
+}
+@media (max-width: 600px){
+
+section {
+  max-width: 80%;
+}
+}

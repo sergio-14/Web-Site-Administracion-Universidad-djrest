@@ -1,0 +1,110 @@
+<!-- templates/seg_mod_graduacion/revisar_proyecto_final.html -->
+{% extends "dashboard.html" %}
+{% load static %}
+{% block content %}
+
+<article class="container "> 
+  <h1 class="align-items-center justify-content-center text-center titulosgeneral">AREA REVISION DE FORMULARIOS PROYECTOS FINALES</h1>
+  <br>
+
+  {% for proyecto in proyectos %}
+
+  <div class="container">
+    <div class="card mb-4 mx-auto contrevision" style="max-width: 840px;">
+      <div class="row g-0 ">
+
+        <div class="col-md-4 m-2">
+          {% if proyecto.user.imagen %}
+            <img src="{{ proyecto.user.imagen.url }}" class="p-2 mt-4 no-gutters img-fluid rounded-left and rounded-right to rounded-start and rounded-end" style="height: 300px;" alt="...">
+          {% else %}
+            <img src="{% static 'img/SINFOTO.webp' %}" class="p-2 mt-4 no-gutters img-fluid rounded-left and rounded-right to rounded-start and rounded-end" style="height: 300px;" alt="...">
+          {% endif %}
+        </div>
+
+        <div class="col-md-7">
+          <div class="card-body"><br>
+              <h5 class="card-title">TITULO: {{ proyecto.titulo }}</h5>
+              <h6 class="card-title">MODALIDAD OPTADA: {{ proyecto.modalidad }}</h6>
+              <h5 class="card-name">POSTULANTE: {{ proyecto.user.nombre }} {{ proyecto.user.apellido }}</h5>
+              <p class="card-text">Descripcion:<br>{{ proyecto.resumen }}</p>
+              <h2 class="contdoc col-lg-7 " data-label="Documento Proyecto"><a href="{{ proyecto.documentacion.url }}" class="list-group-item list-group-item-action">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-files" viewBox="0 0 16 16">
+                      <path d="M13 0H6a2 2 0 0 0-2 2 2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2 2 2 0 0 0 2-2V2a2 2 0 0 0-2-2m0 13V4a2 2 0 0 0-2-2H5a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1M3 4a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/>
+                    </svg> Ver Documento</a></h2>
+              </div>
+          </div>
+      </div>
+      <br>
+      <!-- Formulario para aprobar/rechazar con espacio para agregar comentario -->
+     <p class="px-3 card-text">Comentar Proyecto</p>
+     <div class="container">
+        <form id="approvalForm" method="POST" action="{% url 'PerfilesParaAprobar' %}">
+          {% csrf_token %}
+          <input type="hidden" name="proyecto_id" value="{{ proyecto.id }}">
+          <textarea class="comentari-field contdoc" name="comentario_texto" required></textarea>
+          <br><br>
+          <button type="button" name="aprobar" class="btn btn-success " data-toggle="modal" data-target="#approveModal">Aprobar</button> ||
+          <button type="button" name="rechazar" class="btn btn-danger " data-toggle="modal" data-target="#rejectModal">Rechazar</button>
+        </form>
+        <br>
+      </div>
+
+    </div>
+  </div>
+  {% endfor %}
+</article> 
+<br>
+<!-- Modal de confirmación de aprobación -->
+<div class="modal fade" id="approveModal" tabindex="-1" aria-labelledby="approveModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-mdal">
+      <div class="modal-header">
+        <h5 class="modal-title font" id="approveModalLabel">Confirmar Aprobación</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center font">
+          <img src="{% static 'img/siguiente.png' %}" class="img-close" alt="" /><br>
+          ¿Estás seguro que quiere Aprobar formulario?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-success" onclick="submitForm('aprobar')">Sí, Aprobar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de confirmación de rechazo -->
+<div class="modal fade" id="rejectModal" tabindex="-1" aria-labelledby="rejectModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-mdal">
+      <div class="modal-header">
+        <h5 class="modal-title font" id="rejectModalLabel">Confirmar Rechazo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center font">
+          <img src="{% static 'img/confi.png' %}" class="img-close" alt="" /><br>
+          ¿Estás seguro que quiere Rechazar formulario?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-danger" onclick="submitForm('rechazar')">Sí, Rechazar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function submitForm(action) {
+    const form = document.getElementById('approvalForm');
+    const hiddenInput = document.createElement('input');
+    hiddenInput.type = 'hidden';
+    hiddenInput.name = action;
+    form.appendChild(hiddenInput);
+    form.submit();
+  }
+</script>
+{% endblock %}

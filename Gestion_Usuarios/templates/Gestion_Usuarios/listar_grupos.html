@@ -1,0 +1,38 @@
+{% extends "dashboard.html" %}
+{% block title %}Listar Grupos{% endblock %}
+{% load static %}
+{% block content %}
+
+<head>
+    <link type='text/css' href= "{% static "css\style_crud.css" %}" rel='stylesheet'/>
+</head>
+
+<div class="container-fluid mt-4">
+    <h2>Listar Grupos</h2>
+    <a href="{% url 'crear_grupo' %}" class="btn btn-primary mb-3">Crear Grupo</a>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for grupo in grupos %}
+                    <tr>
+                        <td>{{ grupo.name }}</td>
+                        <td>
+                            <a href="{% url 'actualizar_grupo' grupo.id %}" class="btn btn-warning btn-sm">Actualizar</a>
+                            <form action="{% url 'eliminar_grupo' grupo.id %}" method="post" class="d-inline">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

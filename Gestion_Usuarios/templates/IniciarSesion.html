@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+{% load static %}
+{% load bootstrap_filters %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style_login.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.1/font/bootstrap-icons.css">
+</head>
+<body>
+    <main>
+        <div class="contenedor__todo">
+            <div class="caja__trasera">
+                <div class="contenedor__login">
+                    <form method="post" class="formulario__login">
+                        {% csrf_token %}
+                        <h2>Iniciar Sesión</h2>
+
+                        <!-- Mostrar los errores aquí -->
+                        {% if not form.first_attempt %}
+                            <div class="error">
+                                {{ form.non_field_errors }}
+                            </div>
+                        {% endif %}
+
+                        <div>
+                            {{ form.email|add_class:"form-control" }}
+                            {% if not form.first_attempt %}
+                                {% for error in form.email.errors %}
+                                    <div class="error">{{ error }}</div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div class="input-group mb-3">
+                            {{ form.password|add_class:"form-control" }}
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        {% if not form.first_attempt %}
+                            {% for error in form.password.errors %}
+                                <div class="error">{{ error }}</div>
+                            {% endfor %}
+                        {% endif %}
+                        <button type="submit" id="entrar">Entrar</button>
+                        <div class="card">
+                            <a href="#">Olvidé mi contraseña</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="{% static 'js/login.js' %}"></script>
+</body>
+</html>

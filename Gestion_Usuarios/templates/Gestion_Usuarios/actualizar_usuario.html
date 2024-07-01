@@ -1,0 +1,104 @@
+{% extends "dashboard.html" %}
+{% load static %}
+{% block content %}
+<head>
+    <link type='text/css' href= "{% static "css\style_crud.css" %}" rel='stylesheet'/>
+</head>
+
+<div class="container mt-4">
+    <h2>Actualizar Usuario</h2>
+    {% if errors %}
+        <div class="alert alert-danger">
+            <ul>
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    <form id="update-user-form" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row radio-border= 50%">
+            <div class="col-md-6">
+                <div class="form-group">
+                    {{ form.imagen.label_tag }}
+                    {{ form.imagen }}
+                    {{ form.imagen.errors }}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <img id="preview" src="" alt="Vista previa de la imagen" style="display: none; max-width: 150px; height: 150px; border-radius: 50%;">                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form.email.label_tag }}
+            {{ form.email }}
+        </div>
+        <div class="form-group">
+            {{ form.nombre.label_tag }}
+            {{ form.nombre }}
+        </div>
+        <div class="form-group">
+            {{ form.apellido.label_tag }}
+            {{ form.apellido }}
+        </div>
+        <div class="form-group">
+            {{ form.ci.label_tag }}
+            {{ form.ci }}
+        </div>
+        <div class="form-group">
+            {{ form.ru.label_tag }}
+            {{ form.ru }}
+        </div>
+        <div class="form-group">
+            {{ form.is_active.label_tag }}
+            {{ form.is_active }}
+            {{ form.is_active.errors }}
+        </div>
+        <div class="form-group">
+            {{ form.is_staff.label_tag }}
+            {{ form.is_staff }}
+            {{ form.is_staff.errors }}
+        </div>
+        <div class="form-group">
+            {{ form.is_superuser.label_tag }}
+            {{ form.is_superuser }}
+            {{ form.is_superuser.errors }}
+        </div>
+        <div class="form-group">
+            {{ form.groups.label_tag }}
+            {{ form.groups }}
+            {{ form.groups.errors }}
+        </div>
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <a href="{% url 'listar_usuarios' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+
+
+<script>
+    document.getElementById('id_imagen').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const preview = document.getElementById('preview');
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            }
+            reader.readAsDataURL(file);
+        } else {
+            document.getElementById('preview').style.display = 'none';
+        }
+    });
+</script>
+
+
+{% endblock %}

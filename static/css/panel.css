@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+.navhome{
+    background: linear-gradient(#032544,
+    rgb(0, 4, 15));
+    font-family: "Anton";
+
+}
+
+.anton-regular {
+    font-family: "Anton", sans-serif;
+    font-weight: 50;
+    font-style: normal;
+  }
+
+/* interaccion social */
+.containersocial{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 43px; 
+}
+.fondosocial{
+    width:600px;
+    height:500px ;
+    opacity: 30%;
+}
+@media (max-width: 767px) {
+    .fondosocial{
+        width: 300px;
+        height:400px ;
+    }
+}

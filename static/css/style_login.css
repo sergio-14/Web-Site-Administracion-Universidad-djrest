@@ -1,0 +1,214 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    justify-content: center;
+    align-items: center;
+    background-image: url(../img/lluvia.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor__todo {
+    width: 80%;
+    max-width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.caja__trasera {
+    width: 80%;
+    padding: 0px 0px;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    background-color: rgba(6, 74, 141, 0.403);
+    border-radius: 25px;
+}
+
+#entrar {
+    background: #003366;
+    color: #fff;
+    border-radius: 25px;   
+}
+
+#entrar:hover {
+    background: #0b6164;
+    color: #fff;
+    box-shadow: 0 2px 10px;
+    transform: translateY(-2px);
+}
+
+/* Formularios */
+.contenedor__login {
+    width: 100%;
+    max-width: 380px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: left 500ms cubic-bezier(0.175, 0.885, 0.320, 1.275);
+}
+
+.contenedor__login form {
+    width: 100%;
+    padding: 80px 20px;
+    background: #fff;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.contenedor__login form h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: #003366;
+}
+.contenedor__login form h2:hover {
+    transform: translateY(-2px);
+    color: #0b6164;
+}
+
+.contenedor__login form .form-group {
+    margin-top: 20px;
+}
+
+.contenedor__login form .input-group {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.contenedor__login form .input-group .form-control {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    flex: 1;
+}
+
+.contenedor__login form .input-group .input-group-append .btn {
+    margin: 0%;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background: #F2F2F2;
+    border: none;
+}
+.input-group .btn .bi-eye {
+    color: #003366; /* Cambia este valor al color que desees */
+}
+
+.input-group .btn .bi-eye-slash {
+    color: #003366; /* Cambia este valor al mismo color del icono bi-eye */
+}
+
+.input-group .btn:active .bi-eye,
+.input-group .btn:active .bi-eye-slash,
+.input-group .btn:focus .bi-eye,
+.input-group .btn:focus .bi-eye-slash {
+    color: #003366; /* Cambia este valor al color que desees */
+}
+.contenedor__login form .input-group .btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.contenedor__login form input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 15px;
+    background: #F2F2F2;
+    font-size: 16px;
+    outline: none;
+}
+
+.contenedor__login form button {
+    padding: 10px 40px;
+    margin-top: 40px;
+    border: none;
+    font-size: 14px;
+    background: #003366;
+    font-weight: 600;
+    cursor: pointer;
+    color: #fff;
+    outline: none;
+}
+
+.card {
+    margin-top: 20px;
+    color: #003366;
+    font-family: cursive;
+    border: none;
+}
+
+.card a {
+    font-family: cursive;
+}
+
+.card a:hover {
+    transform: translateY(-2px);
+    color: #0b6164;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+/* Estilos para pantallas de tamaño máximo 600px */
+@media only screen and (max-width: 400px) {
+    .formulario__login {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+}
+
+/* Estilos para pantallas de tamaño máximo 600px */
+@media only screen and (max-width: 600px) {
+    .formulario__login {
+        width: 80%;
+        margin: 0 auto;
+    }
+    
+    /* Aquí puedes agregar más estilos responsivos según sea necesario */
+}
+
+/* Estilos para pantallas de tamaño máximo 992px */
+@media only screen and (max-width: 992px) {
+    .formulario__login {
+        width: 60%;
+        margin: 0 auto;
+    }
+    
+    /* Aquí puedes agregar más estilos responsivos según sea necesario */
+}
+
+/* Estilos para pantallas de tamaño máximo 1200px */
+@media only screen and (max-width: 1200px) {
+    .formulario__login {
+        width: 50%;
+        margin: 0 auto;
+    }
+    
+    /* Aquí puedes agregar más estilos responsivos según sea necesario */
+}

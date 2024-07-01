@@ -1,0 +1,93 @@
+{% extends 'dashboard.html' %} 
+{% load crispy_forms_tags %} 
+{% block content %}
+{% load static %}
+<div class="container px-lg-5 ">
+    <div class="px-lg-5 font">
+        <h1 id=" letr" class="text-center pb-5">Agregar Nuevo Proyecto de Interacción Social</h1>
+        <p class="text-tareas text-end p-1" >
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
+                <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857z"/>
+                <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+              </svg> <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-card-checklist" viewBox="0 0 16 16">
+                <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z"/>
+                <path d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0M7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0"/>
+              </svg> Tiene {{ tiempo_restante }} días restantes Implementar su Proyecto. 
+        </p>
+        <article>
+            <form id="pot" method="post" enctype="multipart/form-data" onsubmit="showConfirmationModal(event)">
+                {% csrf_token %} 
+                {{ form|crispy }} 
+                {% if habilitado %} 
+                {% if tiempo_restante is not None %}
+                {% endif %} 
+                <input name="" id="" class="btn btn-success contsuccess" type="submit" value="Enviar Informacion" {% if form_disabled %}disabled{% endif %}> || 
+                <button type="button" class="btn btn-danger contdanger" data-toggle="modal" data-target="#cancelModal">Cancelar</button>
+                {% else %}
+                <p>
+                    El sistema está deshabilitado para agregar proyectos en este momento.
+                </p>
+                {% endif %}
+                <br />
+                {% comment %} <a>
+                    <input name="" id="boton1" class="btn btn-success contsuccess" type="submit" value="Enviar Informacion"/>
+                </a> || 
+                <a name="" id="boton1" class="btn btn-danger contdanger" href="{% url 'dashboard' %}" role="button" >Cancelar</a> {% endcomment %}
+            </form>
+            <br />
+        </article>        
+    </div>
+</div>
+<!--salir formulario-->
+<div class="modal fade" id="cancelModal" tabindex="-1" aria-labelledby="cancelModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-mdal">
+        <div class="modal-header">
+          <h5 class="modal-title font" id="cancelModalLabel">Confirmar Salida de Formulario</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body text-center font">
+          <img src="{% static 'img/close.png' %}" class="img-close" alt="" /><br>
+          ¿Estás seguro que quiere salir del formulario?
+        </div>
+        <div class="modal-footer">
+          <a href="{% url 'dashboard' %}" class="btn btn-danger">Sí, Cancelar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal de confirmación -->
+  <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-mdal">
+        <div class="modal-header">
+          <h5 class="modal-title font" id="confirmationModalLabel"> Confirmacion de Formulario</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body text-center font">
+          <img src="{% static 'img/close.png' %}" class="img-close" alt="" /><br>
+          ¡Formulario Enviado con Exito!
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    function showConfirmationModal(event) {
+      event.preventDefault(); 
+      $('#confirmationModal').modal('show'); 
+      
+      setTimeout(function() {
+        $('#confirmationModal').modal('hide'); 
+        document.getElementById("pot").submit(); 
+      }, 2000);
+    }
+  </script>
+{% endblock %}

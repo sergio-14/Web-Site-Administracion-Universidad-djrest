@@ -1,0 +1,99 @@
+{% extends 'dashboard.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Crear Form{% endblock %}
+{% load static %}
+{% block content %}
+
+<style>
+  .main-container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+  }
+  .font {
+    margin-bottom: 0;
+  }
+  .contsuccess, .contdanger {
+    margin-top: 10px;
+  }
+  .modal-body img.img-close {
+    margin-bottom: 15px;
+  }
+</style>
+
+<div class="container main-container font pb-5 mt-4">
+  <div class="no-gutters container px-lg-5 px-2">
+    <h1 id="letr" class="text-center pb-5 pt-4">AGREGAR NUEVO FORMULARIO PROYECTO FINAL</h1>
+    <article class="pb-5">
+      <form id="project-form" method="post" enctype="multipart/form-data" onsubmit="showConfirmationModal(event)">
+        {% csrf_token %}
+        {{ form|crispy }}
+        {% if not form_disabled %}
+        <br>
+        <input name="" id="" class="btn btn-success contsuccess" type="submit" value="Enviar Informacion" {% if form_disabled %}disabled{% endif %}> || 
+        <button type="button" class="btn btn-danger contdanger" data-toggle="modal" data-target="#cancelModal">Cancelar</button>
+        {% else %}
+          <p class="text-end card-title ">Formulario deshabilitado. Debes tener una proyecto de perfil aprobada para agregar un proyecto final.</p>
+        {% endif %}
+      </form>
+      <br>
+    </article>
+  </div> 
+</div>
+
+<!--salir formulario-->
+<div class="modal fade" id="cancelModal" tabindex="-1" aria-labelledby="cancelModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-mdal">
+      <div class="modal-header">
+        <h5 class="modal-title font" id="cancelModalLabel">Confirmar Salida de Formulario</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center font">
+        <img src="{% static 'img/close.png' %}" class="img-close" alt="" /><br>
+        ¿Estás seguro que quiere salir del formulario?
+      </div>
+      <div class="modal-footer">
+        <a href="{% url 'dashboard' %}" class="btn btn-danger">Sí, Cancelar</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de confirmación -->
+<div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-mdal">
+      <div class="modal-header">
+        <h5 class="modal-title font" id="confirmationModalLabel"> Confirmacion de Formulario</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center font">
+        <img src="{% static 'img/close.png' %}" class="img-close" alt="" /><br>
+        ¡Formulario Enviado con Exito!
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function showConfirmationModal(event) {
+    event.preventDefault(); 
+    $('#confirmationModal').modal('show'); 
+    
+    setTimeout(function() {
+      $('#confirmationModal').modal('hide'); 
+      document.getElementById("project-form").submit(); 
+    }, 2000);
+  }
+</script>
+{% endblock %}

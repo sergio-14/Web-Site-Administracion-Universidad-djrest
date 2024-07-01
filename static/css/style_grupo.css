@@ -1,0 +1,53 @@
+/* Estilos para los permisos */
+.permission-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}
+
+.permission-card h5 {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.permission-card .permission-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.permission-card .permission-item {
+    flex: 1 1 45%; /* Ajusta el ancho de cada columna */
+    margin-bottom: 10px;
+}
+
+.permission-card label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.permission-card label input {
+    margin-right: 10px;
+}
+
+
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+    .container-fluid {
+        padding: 15px;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    .form-control, .form-check-input {
+        margin-bottom: 10px;
+    }
+}

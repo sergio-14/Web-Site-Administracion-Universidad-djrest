@@ -1,0 +1,121 @@
+/* Estilos personalizados */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Baloo 2', cursive;
+}
+h2, h6{
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.container{
+    margin-top: 20px;
+
+}
+.imgD {
+    border-radius: 25%;
+    width: 250px;
+    height: 250px;
+    margin-top: 20px;
+  }
+
+  .centered-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-45%);
+  }
+
+  .narrow-card {
+    max-width: 600px;
+    margin: 0 auto; 
+    border-radius: 5%;
+    background-color: rgba(238, 255, 255, 0.422);
+  }
+
+  /*---------*-*/
+  .narrow-card:hover {
+    box-shadow: 0 10px 15px #0b6164;
+}
+.imgD:hover {
+    box-shadow: 0 8px 15px #0b6164;
+    transform: translateY(-15px);
+}
+  
+.descriptionD {
+    padding: 25px;
+    text-align: center;
+
+}
+
+.descriptionD h3 {
+    color: #05383a;
+    margin-bottom: 25px;
+    font-size: 30px;
+}
+
+.descriptionD h4 {
+    color: #1c5a5c;
+    margin-bottom: 20px;
+    margin-left: 50px;
+    font-size: 18px;
+}
+
+.descriptionD p {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #1c5a5c;
+}
+
+.details {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.details .column-01, .details .column-02 {
+    width: 45%;
+    text-align: center;
+}
+
+.contactD {
+    width: 100%;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contactD button {
+    text-decoration: none;
+    color: #ffffff;
+    background: #003366;
+    padding: 7px 30px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.contactD button:hover {
+    background: #0b6164;
+    box-shadow: 0 5px 15px #003366;
+    transform: translateY(-2px);
+}
+
+  /*Responsivo*/
+  @media screen and (max-width: 768px) {
+    .centered-img {
+      justify-content: center;
+      align-items: center;
+      transform: translateY(-10%);
+    }
+  }
+  @media (max-width: 768px) {
+    #aaa {
+      white-space: pre-wrap; /* Para manejar el texto largo en dispositivos móviles */
+    }
+  }

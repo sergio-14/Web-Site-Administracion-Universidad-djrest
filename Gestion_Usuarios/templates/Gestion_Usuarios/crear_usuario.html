@@ -1,0 +1,75 @@
+{% extends "dashboard.html" %}
+{% load static %}
+{% block content %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style_crud.css' %}">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+</head>
+<div class="container mt-4">
+    <h2>Crear Usuario</h2>
+    <form id="create-user-form" method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div class="form-group">
+            {{ form.email.label_tag }}
+            {{ form.email }}
+            {{ form.email.errors }}
+        </div>
+        <div class="form-group">
+            {{ form.nombre.label_tag }}
+            {{ form.nombre }}
+            {{ form.nombre.errors }}
+        </div>
+        <div class="form-group">
+            {{ form.apellido.label_tag }}
+            {{ form.apellido }}
+            {{ form.apellido.errors }}
+        </div>
+        <div class="form-group">
+            {{ form.ci.label_tag }}
+            {{ form.ci }}
+            {{ form.ci.errors }}
+        </div>
+        <div class="form-group">
+            {{ form.ru.label_tag }}
+            {{ form.ru }}
+            {{ form.ru.errors }}
+        </div>
+        <div class="form-group">
+            {{ form.password1.label_tag }}
+            {{ form.password1 }}
+            {{ form.password1.errors }}
+        </div>
+        <div class="form-group">
+            {{ form.password2.label_tag }}
+            {{ form.password2 }}
+            {{ form.password2.errors }}
+        </div>
+        <div class="form-group">
+            {{ form.is_active.label_tag }}
+            {{ form.is_active }}
+            {{ form.is_active.errors }}
+        </div>
+        <div class="form-group">
+            {{ form.is_staff.label_tag }}
+            {{ form.is_staff }}
+            {{ form.is_staff.errors }}
+        </div>
+        <div class="form-group">
+            {{ form.is_superuser.label_tag }}
+            {{ form.is_superuser }}
+            {{ form.is_superuser.errors }}
+        </div>
+        <div class="form-group">
+            {{ form.groups.label_tag }}
+            {{ form.groups }}
+            {{ form.groups.errors }}
+        </div>
+        <button type="button" class="btn btn-success" onclick="confirmCreate()">Guardar</button>
+        <a href="{% url 'listar_usuarios' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+
+<script src="{% static 'js/confirmations.js' %}"></script>
+{% endblock %}

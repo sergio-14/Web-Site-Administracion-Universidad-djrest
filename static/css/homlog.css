@@ -1,0 +1,188 @@
+.gradient-custom {
+    /* fallback for old browsers */
+    background: #03072c;
+    background: -webkit-linear-gradient(to right, rgb(18, 5, 73), rgb(7, 94, 134));
+    background: linear-gradient(to right, rgb(9, 5, 66), rgb(6, 136, 175))
+    }
+
+#principal{
+    display: grid;
+    place-items:center ;
+    top: 50px;
+    overflow: hidden;
+}
+
+
+#particles-js {
+    background: linear-gradient(to right, #020c1a, #021220, rgb(4, 75, 97));
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: -1;
+    
+}
+
+#imgf {
+    top: 0;
+    height: 685px;
+    width: 700px;
+    position: absolute;
+    opacity: 50%;
+    /* Establece la posición absoluta */
+    /* Ajusta la distancia desde la parte superior */
+    right:0;
+    /* Ajusta la distancia desde la izquierda */
+    animation: moveFromBottom 2s ease forwards;
+}
+@keyframes moveFromBottom {
+    0% {
+        transform: translateX(-10%);
+    }
+    100% {
+        transform: translateX(-0%);
+    }
+}
+
+#img1 {
+    top: 140px;
+    left: 830px;
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    /* Establece la posición absoluta */
+    /* Ajusta la distancia desde la parte superior */
+    right:0;
+    /* Ajusta la distancia desde la izquierda */
+    animation: crecerYVolver 2s ease infinite alternate;
+    border: 2px solid #061249; /* Color del borde */
+    border-radius: 55px; /* Radio de la esquina para hacer el borde redondo */
+    opacity: 70%;
+    
+}
+
+#img2 {
+    top: 260px;
+    left: 710px;
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    /* Establece la posición absoluta */
+    /* Ajusta la distancia desde la parte superior */
+    right:0;
+    /* Ajusta la distancia desde la izquierda */
+    animation: crecerYVolver 2s ease infinite alternate;
+    border: 2px solid #061249; /* Color del borde */
+    border-radius: 55px; /* Radio de la esquina para hacer el borde redondo */
+    opacity: 70%;
+    
+}
+#img3 {
+    top: 330px;
+    left: 990px;
+    height: 90px;
+    width: 90px;
+    position: absolute;
+    /* Establece la posición absoluta */
+    /* Ajusta la distancia desde la parte superior */
+    right:0;
+    /* Ajusta la distancia desde la izquierda */
+    animation: crecerYVolver 2s ease infinite alternate;
+    border: 2px solid #061249; /* Color del borde */
+    border-radius: 55px; /* Radio de la esquina para hacer el borde redondo */
+    opacity: 70%;
+    
+}
+#img4 {
+    top: 380px;
+    left: 770px;
+    height: 90px;
+    width: 90px;
+    position: absolute;
+    /* Establece la posición absoluta */
+    /* Ajusta la distancia desde la parte superior */
+    right:0;
+    /* Ajusta la distancia desde la izquierda */
+    animation: crecerYVolver 2s ease infinite alternate;
+    border: 2px solid #061249; /* Color del borde */
+    border-radius: 55px; /* Radio de la esquina para hacer el borde redondo */
+    opacity: 70%;
+    
+}
+
+
+@keyframes crecerYVolver {
+    0% {
+        transform: scale(1); /* Tamaño original */
+    }
+    50% {
+        transform: scale(1.2); /* Escalar al 120% del tamaño original */
+    }
+    100% {
+        transform: scale(1); /* Volver al tamaño original */
+    }
+
+    0% {
+        border-color: #021216;
+    }
+    25% {
+        border-color: #086296;
+    }
+    50% {
+        border-color: #d1ce0c;
+    }
+    75% {
+        border-color: #021f2c;
+    }
+    
+}
+
+/* Consulta de medios para dispositivos móviles */
+@media only screen and (max-width: 600px) {
+    #imgf {
+        max-width: 70%;
+        
+    }
+}
+
+/* Estilo para ocultar la imagen en dispositivos móviles */
+#logoResponsive{
+    height: 200px;
+    width: 200px;
+   
+    
+}
+#textResponsive{
+    text-align: center;
+    color: rgb(235, 220, 14);
+    font-size: 20px;
+}
+.desktop-only {
+    display: block; /* Asegura que la imagen sea visible de forma predeterminada */
+    
+}
+
+/* Consulta de medios para dispositivos móviles */
+@media only screen and (max-width: 600px) {
+    .desktop-only {
+        display: none; /* Oculta la imagen en dispositivos móviles */
+   
+    }
+}
+
+
+
+
+/* Estilo para el título en dispositivos móviles */
+.mobile-only {
+    display: none; /* Oculta el título de forma predeterminada */
+}
+
+/* Consulta de medios para dispositivos móviles */
+@media only screen and (max-width: 600px) {
+    .mobile-only {
+        display: block; /* Muestra el título solo en dispositivos móviles */
+    }
+}
+
+/*boton login*/

@@ -1,0 +1,19 @@
+{% for usuario in page_obj %}
+<div class="col-lg-3 col-md-6 mb-4 bg-transparent">
+    <div class="card user-card bg-transparent ">
+        <div class="card-body no-gutters">
+            <h5 class="card-title email">{{ usuario.email }}</h5>
+            <p class="card-text"><strong>Nombre:</strong> {{ usuario.nombre }}</p>
+            <p class="card-text"><strong>Apellido:</strong> {{ usuario.apellido }}</p>
+
+            <p>RU: {{ usuario.ru }}</p>
+            <p>CI: {{ usuario.ci }}</p>
+
+            <div class="btn-group">
+                <a href="{% url 'actualizar_usuario' usuario.pk %}" class="btn btn-warning">Actualizar</a>
+                <a href="javascript:void(0);" class="btn btn-danger" onclick="confirmDelete('{{ usuario.pk }}')">Eliminar</a>            
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
