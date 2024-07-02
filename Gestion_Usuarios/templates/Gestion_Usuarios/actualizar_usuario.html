@@ -5,7 +5,7 @@
     <link type='text/css' href= "{% static "css\style_crud.css" %}" rel='stylesheet'/>
 </head>
 
-<div class="container mt-4">
+<div class="container mt-4  p-lg-5  p-3 no-gutters">
     <h2>Actualizar Usuario</h2>
     {% if errors %}
         <div class="alert alert-danger">
@@ -49,28 +49,56 @@
             {{ form.apellido.label_tag }}
             {{ form.apellido }}
         </div>
-        <div class="form-group">
-            {{ form.ci.label_tag }}
-            {{ form.ci }}
+        <div class="row">
+            <div class="col-6 form-group">
+                {{ form.ci.label_tag }}
+                {{ form.ci }}
+                {{ form.ci.errors }}
+            </div>
+            <div class="col-6 form-group">
+                {{ form.ru.label_tag }}
+                {{ form.ru }}
+                {{ form.ru.errors }}
+            </div>
         </div>
         <div class="form-group">
-            {{ form.ru.label_tag }}
-            {{ form.ru }}
+            {{ form.password1.label_tag }}
+            {{ form.password1 }}
+            {{ form.password1.errors }}
         </div>
         <div class="form-group">
-            {{ form.is_active.label_tag }}
-            {{ form.is_active }}
-            {{ form.is_active.errors }}
+            {{ form.password2.label_tag }}
+            {{ form.password2 }}
+            {{ form.password2.errors }}
         </div>
-        <div class="form-group">
-            {{ form.is_staff.label_tag }}
-            {{ form.is_staff }}
-            {{ form.is_staff.errors }}
-        </div>
-        <div class="form-group">
-            {{ form.is_superuser.label_tag }}
-            {{ form.is_superuser }}
-            {{ form.is_superuser.errors }}
+        <div class="row fontf container">
+            <div class="col-lg-4 py-2 form-check form-switch d-flex align-items-center">
+                <div class="me-2 pb-3">
+                    {{ form.is_active.label_tag }}
+                </div>
+                <div>
+                    {{ form.is_active }}
+                    {{ form.is_active.errors }}
+                </div>
+            </div>
+            <div class="col-lg-4 py-2 form-check form-switch d-flex align-items-center">
+                <div class="me-2 pb-3">
+                    {{ form.is_staff.label_tag }}
+                </div>
+                <div>
+                    {{ form.is_staff }}
+                    {{ form.is_staff.errors }}
+                </div>
+            </div>
+            <div class="col-lg-4 py-2 form-check form-switch d-flex align-items-center">
+                <div class="me-2 pb-3">
+                    {{ form.is_superuser.label_tag }}
+                </div>
+                <div>
+                    {{ form.is_superuser }}
+                    {{ form.is_superuser.errors }}
+                </div>
+            </div>
         </div>
         <div class="form-group">
             {{ form.groups.label_tag }}

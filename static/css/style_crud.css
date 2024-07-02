@@ -31,32 +31,9 @@ h2 {
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
 }
 
-.btn {
-    padding: 10px 20px;
-    border-radius: 4px;
-    text-align: center;
-    margin-right: 10px;
-}
 
-.btn-success {
-    background-color: #28a745;
-    border: none;
-    color: #fff;
-}
 
-.btn-success:hover {
-    background-color: #218838;
-}
 
-.btn-secondary {
-    background-color: #6c757d;
-    border: none;
-    color: #fff;
-}
-
-.btn-secondary:hover {
-    background-color: #5a6268;
-}
 
 .alert {
     padding: 10px;
